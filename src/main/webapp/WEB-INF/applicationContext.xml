@@ -10,4 +10,8 @@
        <bean id="userAction" class="de.datepicker.login.action.UserAction">
               <property name="userBo" ref="userBo" />
        </bean>
+
+        <bean id="user" class="de.datepicker.domain.User" />
+
+        <bean id="loginAction" class="de.datepicker.login.action.LoginAction" />
 </beans>

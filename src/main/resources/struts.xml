@@ -5,14 +5,12 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-        <package name="struts" extends="struts-default">
-                <result-types>
-                        <result-type name="thymeleaf" class="thymeleafResult" />
-                </result-types>
-
+        <package name="struts" extends="struts-thymeleaf">
                 <action name="userAction" class="userAction">
                         <result name="success" type="thymeleaf">user</result>
                 </action>
+                <action name="loginAction" class="loginAction">
+                        <result name="success" type="thymeleaf">login</result>
+                </action>
         </package>
-
 </struts>
