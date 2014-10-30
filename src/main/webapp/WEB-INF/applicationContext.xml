@@ -3,7 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <bean id="userBo" class="de.datepicker.login.bo.impl.UserBoImpl" />
+        <bean id="thymeleafResult" class="org.codework.struts.plugins.thymeleaf.ThymeleafResult" />
+
+        <bean id="userBo" class="de.datepicker.login.bo.impl.UserBoImpl" />
 
        <bean id="userAction" class="de.datepicker.login.action.UserAction">
               <property name="userBo" ref="userBo" />

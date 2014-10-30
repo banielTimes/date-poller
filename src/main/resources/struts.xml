@@ -5,9 +5,14 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-        <package name="default" extends="struts-default">
+        <package name="struts" extends="struts-default">
+                <result-types>
+                        <result-type name="thymeleaf" class="thymeleafResult" />
+                </result-types>
+
                 <action name="userAction" class="userAction">
-                        <result name="success">pages/user.jsp</result>
+                        <result name="success" type="thymeleaf">user</result>
                 </action>
         </package>
+
 </struts>

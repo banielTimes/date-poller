@@ -11,6 +11,7 @@ war {
 }
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 	maven {
 		url 'http://repo.spring.io/snapshot'		
@@ -21,8 +22,14 @@ dependencies {
 	compile	'org.apache.struts:struts2-core:2.3.16.3'
 	compile	'org.apache.struts.xwork:xwork-core:2.3.16.3'
 	compile	'org.apache.struts:struts2-spring-plugin:2.3.16.3'
+/*
+	compile 'javax.servlet:jsp-api:2.0'
+*/
 	compile 'org.springframework:spring-core:4.1.1.RELEASE'
 	compile 'org.springframework:spring-web:4.1.1.RELEASE'
+	compile 'org.thymeleaf:thymeleaf:2.1.3.RELEASE'
+	compile 'org.thymeleaf:thymeleaf-spring4:2.1.3.RELEASE'
+	compile fileTree(dir: 'lib', include: ['*.jar'])
 }
 
 task wrapper(type: Wrapper) {
