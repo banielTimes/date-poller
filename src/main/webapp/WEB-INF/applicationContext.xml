@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+        <context:component-scan base-package="de.datepoller" />
+
+        <jpa:repositories base-package="de.datepoller.data" />
 
         <bean id="thymeleafResult" class="org.codework.struts.plugins.thymeleaf.ThymeleafResult" />
 
-        <bean id="userBo" class="de.datepicker.login.bo.impl.UserBoImpl" />
+        <bean id="loginAction" class="de.datepoller.login.action.LoginAction" />
 
-       <bean id="userAction" class="de.datepicker.login.action.UserAction">
-              <property name="userBo" ref="userBo" />
-       </bean>
-
-        <bean id="user" class="de.datepicker.domain.User" />
-
-        <bean id="loginAction" class="de.datepicker.login.action.LoginAction" />
+        <bean id="registrationAction" class="de.datepoller.login.action.RegistrationAction" />
 </beans>

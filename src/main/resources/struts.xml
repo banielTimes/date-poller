@@ -6,11 +6,44 @@
 
 <struts>
         <package name="struts" extends="struts-thymeleaf">
-                <action name="userAction" class="userAction">
-                        <result name="success" type="thymeleaf">user</result>
+                <action name="login">
+                        <result>WEB-INF/templates/login.html</result>
                 </action>
-                <action name="loginAction" class="loginAction">
+
+                <action name="loginAction" class="loginAction" method="execute">
+                        <result name="success" type="thymeleaf">index</result>
+                </action>
+
+                <action name="registration">
+                        <result>WEB-INF/templates/registration.html</result>
+                </action>
+
+                <action name="registrationAction" class="registrationAction" method="execute">
                         <result name="success" type="thymeleaf">login</result>
                 </action>
+
+                <action name="welcome">
+                        <result>WEB-INF/templates/welcome.html</result>
+                </action>
+
+                <action name="index">
+                        <result>WEB-INF/templates/index.html</result>
+                </action>
+
+                <action name="403">
+                        <result>WEB-INF/templates/403.html</result>
+                </action>
+
         </package>
+
+        <!--<package name="struts" extends="struts-default">
+                <action name="start">
+                        <result>login.jsp</result>
+                </action>
+
+                <action name="login" class="loginAction">
+                        <result name="success">index.jsp</result>
+                        <result name="error">welcome.jsp</result>
+                </action>
+        </package>-->
 </struts>

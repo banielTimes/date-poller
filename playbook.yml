@@ -3,4 +3,13 @@
   sudo: yes
 
   roles:
-    - {role: ANXS.mysql, mysql_users: [{name: vagrant, pass: vagrant, priv: "*.*:ALL", host: "10.0.2.2"}] }
+    - role: ANXS.mysql
+
+      mysql_databases:
+        - name: date_poller
+
+      mysql_users:
+        - name: vagrant
+          pass: vagrant
+          priv: "*.*:ALL"
+          host: "10.0.2.2"

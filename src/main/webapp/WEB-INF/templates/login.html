@@ -9,17 +9,23 @@
 
     <article>
         <section>
-            <form action="#" th:action="@{login}" th:object="${action.username}" method="post" >
+            <form name="loginForm" action="/j_spring_security_check" method="post">
                 <div>
                     <label>User</label>
-                    <input type="text" th:field="*{action.username}" />
+                    <input type="text" name="username" />
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="password" th:field="*{action.password}" />
+                    <input type="password" name="password" />
                 </div>
                 <input type="submit" value="Login"/>
             </form>
+        </section>
+
+        <section>
+            <div>
+                <p>No account? Register <a href="/registration">here</a></p>
+            </div>
         </section>
     </article>
 </body>
