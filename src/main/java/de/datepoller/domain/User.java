@@ -4,6 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by dsy on 30.10.14.
@@ -13,12 +14,27 @@ import java.util.Collection;
 public class User {
 
     @Id
-    @Column(unique = true)
+    @Column(unique = true, nullable = false, updatable = false)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
-    @OneToOne(mappedBy = "user", cascade={CascadeType.ALL})
+    private String email;
+    private boolean enabled;
+
+    @Enumerated(EnumType.ORDINAL)
+    @Column(nullable = false)
     private Role role;
+
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    private List<Poll> polls;
+
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+    private List<Poll> createdPolls;
+
+    @ManyToMany(mappedBy = "attendingUsers")
+    private List<Date> attendingDates;
 
     public String getUsername() {
         return username;
@@ -36,11 +52,51 @@ public class User {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public Role getRole() {
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Poll> getPolls() {
+        return polls;
+    }
+
+    public void setPolls(List<Poll> polls) {
+        this.polls = polls;
+    }
+
+    public List<Poll> getCreatedPolls() {
+        return createdPolls;
+    }
+
+    public void setCreatedPolls(List<Poll> createdPolls) {
+        this.createdPolls = createdPolls;
+    }
+
+    public List<Date> getAttendingDates() {
+        return attendingDates;
+    }
+
+    public void setAttendingDates(List<Date> attendingDates) {
+        this.attendingDates = attendingDates;
     }
 }

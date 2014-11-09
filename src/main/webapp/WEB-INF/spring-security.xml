@@ -9,7 +9,10 @@
 
     <http auto-config="true" use-expressions="true">
 
+        <!-- future admin section -->
+<!--
         <intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+-->
 
         <!-- access denied page -->
         <access-denied-handler error-page="/403" />
@@ -34,7 +37,7 @@
                                users-by-username-query=
                                        "select username, password, enabled from user where username=?"
                                authorities-by-username-query=
-                                       "select user_username, role from role where user_username=?" />
+                                       "select username, role from user where username=?" />
         </authentication-provider>
     </authentication-manager>
 

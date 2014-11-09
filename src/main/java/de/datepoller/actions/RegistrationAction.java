@@ -1,9 +1,8 @@
-package de.datepoller.login.action;
+package de.datepoller.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.datepoller.domain.Role;
 import de.datepoller.domain.User;
-import de.datepoller.services.RoleService;
 import de.datepoller.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,9 +13,6 @@ public class RegistrationAction extends ActionSupport {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    RoleService roleService;
 
     private String username;
     private String password;
@@ -42,17 +38,15 @@ public class RegistrationAction extends ActionSupport {
     public String execute() throws Exception {
 
         User user = new User();
-        Role role = new Role();
 
         user.setUsername(username);
         user.setPassword(password);
+        user.setEnabled(true);
 
         // set ROLE_USER as default
-        role.setRole(2);
-        role.setUser(user);
+        user.setRole(Role.USER);
 
         userService.save(user);
-        roleService.save(role);
 
         return SUCCESS;
     }

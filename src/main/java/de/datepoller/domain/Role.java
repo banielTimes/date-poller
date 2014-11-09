@@ -1,42 +1,46 @@
 package de.datepoller.domain;
 
-import javax.persistence.*;
+import java.util.*;
 
 /**
- * Created by dsy on 04.11.14.
+ * Created by dsy on 08.11.14.
  */
+public enum Role {
+    USER(0, "User", "ROLE_USER"),
+    ADMIN(1, "Admin", "ROLE_ADMIN"),
+    CREATOR(2, "Creator", "ROLE_CREATOR");
 
-@Entity(name = "role")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private final long id;
+    private final String name;
+    private final Set<String> authentications;
 
-    @OneToOne
-    private User user;
-    private Integer role;
+    private static Map<Long, Role> rolesMap = new HashMap<Long, Role>();
 
-    public User getUser() {
-        return user;
+    static {
+        for (Role role : EnumSet.allOf(Role.class)) {
+            rolesMap.put(role.getId(), role);
+        }
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    Role(long id, String name, String... authentications) {
+        this.id = id;
+        this.name = name;
+        this.authentications = new HashSet<String>();
+
+        for (String authentication : authentications) {
+            this.authentications.add(authentication);
+        }
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
+    public Set<String> getAuthentications() {
+        return authentications;
     }
 }

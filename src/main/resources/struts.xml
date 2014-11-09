@@ -34,6 +34,14 @@
                         <result>WEB-INF/templates/403.html</result>
                 </action>
 
+                <action name="createPoll">
+                        <result>WEB-INF/templates/create-poll.html</result>
+                </action>
+
+                <action name="createPollAction" class="createPollAction" method="execute">
+                        <result name="success" type="thymeleaf">index</result>
+                </action>
+
         </package>
 
         <!--<package name="struts" extends="struts-default">

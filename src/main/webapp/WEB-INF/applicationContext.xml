@@ -5,13 +5,17 @@
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+        <context:property-placeholder location="classpath:application.properties" />
+
         <context:component-scan base-package="de.datepoller" />
 
         <jpa:repositories base-package="de.datepoller.data" />
 
         <bean id="thymeleafResult" class="org.codework.struts.plugins.thymeleaf.ThymeleafResult" />
 
-        <bean id="loginAction" class="de.datepoller.login.action.LoginAction" />
+        <bean id="loginAction" class="de.datepoller.actions.LoginAction" />
 
-        <bean id="registrationAction" class="de.datepoller.login.action.RegistrationAction" />
+        <bean id="registrationAction" class="de.datepoller.actions.RegistrationAction" />
+
+        <bean id="createPollAction" class="de.datepoller.actions.CreatePollAction" />
 </beans>

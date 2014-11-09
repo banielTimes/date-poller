@@ -1,4 +1,4 @@
-package de.datepoller.login.action;
+package de.datepoller.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,6 +36,7 @@ public class LoginAction extends ActionSupport {
         this.password = password;
     }
 
+/*TODO*/
     @Override
     public String execute() {
         UserDetails userDetails =(UserDetails) SecurityContextHolder.getContext().getAuthentication();
