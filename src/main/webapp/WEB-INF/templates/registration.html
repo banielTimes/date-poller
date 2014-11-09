@@ -3,24 +3,60 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
+    <link rel="stylesheet" href="foundation" />
+    <script src="modernizr"></script>
 </head>
 <body>
-<h1>Register here</h1>
 
-<article>
-    <section>
-        <form name="registrationForm" action="registrationAction" method="post">
-            <div>
-                <label>User</label>
-                <input type="text" name="username" />
-            </div>
-            <div>
-                <label>Password</label>
-                <input type="password" name="password" />
-            </div>
-            <input type="submit" value="Register"/>
-        </form>
-    </section>
-</article>
+    <nav class="top-bar">
+
+        <ul class ="title-area">
+
+            <li class="name"><h1><a href="welcome">Date-Poller</a></h1></li>
+
+        </ul>
+
+        <section class="top-bar-section">
+
+            <ul class="right">
+
+                <li><a href="login">Login</a></li>
+                <li><a href="registration">Registration</a></li>
+                <li><a href="contact">Contact</a></li>
+
+            </ul>
+
+        </section>
+
+    </nav>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Register here</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <article>
+                <section>
+                    <form name="registrationForm" action="registrationAction" method="post">
+                        <div>
+                            <label>User</label>
+                            <input type="text" name="username" />
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" name="password" />
+                        </div>
+
+                        <input type="submit" value="Register"/>
+                    </form>
+                </section>
+            </article>
+
+        </div>
+    </div>
 </body>
 </html>

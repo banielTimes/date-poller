@@ -34,6 +34,18 @@
                         <result>WEB-INF/templates/403.html</result>
                 </action>
 
+                <action name="foundation">
+                        <result>WEB-INF/css/foundation.css</result>
+                </action>
+
+                <action name="modernizr.js">
+                        <result>WEB-INF/js/vendor/modernizr.js</result>
+                </action>
+
+                <action name="contact">
+                        <result>WEB-INF/templates/contact.html</result>
+                </action>
+
         </package>
 
         <!--<package name="struts" extends="struts-default">
