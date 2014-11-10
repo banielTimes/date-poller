@@ -1,9 +1,6 @@
 package de.datepoller.domain;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
 /**

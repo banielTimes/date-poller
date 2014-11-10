@@ -1,12 +1,9 @@
 package de.datepoller.actions;
 
-import de.datepoller.domain.Date;
 import de.datepoller.domain.Poll;
 import de.datepoller.services.DateService;
 import de.datepoller.services.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 /**
  * Created by dsy on 09.11.14.

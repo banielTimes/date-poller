@@ -7,7 +7,6 @@ import de.datepoller.domain.Poll;
 import de.datepoller.services.DateService;
 import de.datepoller.services.NotificationService;
 import de.datepoller.services.PollService;
-import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;

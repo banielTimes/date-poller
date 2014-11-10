@@ -10,10 +10,6 @@
                         <result>WEB-INF/templates/login.html</result>
                 </action>
 
-                <action name="loginAction" class="loginAction" method="execute">
-                        <result name="success" type="thymeleaf">index</result>
-                </action>
-
                 <action name="registration">
                         <result>WEB-INF/templates/registration.html</result>
                 </action>
