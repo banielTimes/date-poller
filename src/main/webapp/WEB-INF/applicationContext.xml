@@ -13,8 +13,6 @@
 
     <bean id="thymeleafResult" class="org.codework.struts.plugins.thymeleaf.ThymeleafResult" />
 
-    <bean id="loginAction" class="de.datepoller.actions.LoginAction" />
-
     <bean id="registrationAction" class="de.datepoller.actions.RegistrationAction" />
 
     <bean id="createPollAction" class="de.datepoller.actions.CreatePollAction" />
