@@ -7,37 +7,60 @@
     <script src="modernizr"></script>
 </head>
 <body>
-<h1>Finish <span th:text="${action.poll.name}" /></h1>
 
-<article>
-    <section>
+    <nav class="top-bar">
 
-        <p>Choose final date</p>
+        <ul class ="title-area">
 
-        <form name="finishPollForm" action="finishPollAction" method="post">
-            <input type="hidden" name="pollId" th:value="${action.poll.id}" />
-            <div>
-                <p>Suggested Dates</p>
+            <li class="name"><h1><a href="welcome">Date-Poller</a></h1></li>
 
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Okay</th>
-                        <th>Attending Users</th>
-                    </tr>
+        </ul>
 
-                    <tr th:each="date : ${action.poll.suggestedDates}">
-                        <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
-                        <td><input type="radio" name="dateId" th:value="${date.id}" /></td>
-                        <td th:text="${date.attendingUsers}" />
-                    </tr>
-                </table>
+        <section class="top-bar-section">
 
-            </div>
-            <input type="submit" value="Submit"/>
-        </form>
-    </section>
-</article>
+            <ul class="right">
+
+                <li><a href="login">Login</a></li>
+                <li><a href="registration">Registration</a></li>
+                <li><a href="contact">Contact</a></li>
+
+            </ul>
+
+        </section>
+
+    </nav>
+
+    <h1>Finish <span th:text="${action.poll.name}" /></h1>
+
+    <article>
+        <section>
+
+            <p>Choose final date</p>
+
+            <form name="finishPollForm" action="finishPollAction" method="post">
+                <input type="hidden" name="pollId" th:value="${action.poll.id}" />
+                <div>
+                    <p>Suggested Dates</p>
+
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th>Okay</th>
+                            <th>Attending Users</th>
+                        </tr>
+
+                        <tr th:each="date : ${action.poll.suggestedDates}">
+                            <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
+                            <td><input type="radio" name="dateId" th:value="${date.id}" /></td>
+                            <td th:text="${date.attendingUsers}" />
+                        </tr>
+                    </table>
+
+                </div>
+                <input type="submit" value="Submit"/>
+            </form>
+        </section>
+    </article>
 
 </body>
 </html>
