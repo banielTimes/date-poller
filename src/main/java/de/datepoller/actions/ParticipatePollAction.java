@@ -55,6 +55,10 @@ public class ParticipatePollAction extends ActionSupport {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.findUserByUsername(username);
 
+        if (user.equals(poll.getCreator())) {
+            return ERROR;
+        }
+
         for (Date date : poll.getSuggestedDates()) {
             date.getAttendingUsers().remove(user);
             user.getAttendingDates().remove(date);

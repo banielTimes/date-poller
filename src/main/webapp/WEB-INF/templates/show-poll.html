@@ -8,8 +8,11 @@
 <h1>Edit <span th:text="${action.poll.name}" /> by User <span th:text="${action.poll.creator.username}" /></h1>
 
 <article>
-    <section>
-        <form name="participatePollForm" action="participatePollAction" method="post">
+    <section th:switch="${action.user}">
+
+        <p th:case="${action.poll.creator}">you are the creator!</p>
+
+        <form th:case="*" name="participatePollForm" action="participatePollAction" method="post">
             <input type="hidden" name="pollId" th:value="${action.poll.id}" />
             <div>
                 <label>Name</label>
