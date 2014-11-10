@@ -56,7 +56,9 @@ public class FinishPollAction extends ActionSupport {
         Notification notification = new Notification();
 
         notification.setMessage("Poll ended");
+/*
         notification.setPoll(poll);
+*/
 
         poll.setFinished(true);
         poll.setFinalDate(date);

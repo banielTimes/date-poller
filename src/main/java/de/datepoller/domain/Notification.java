@@ -17,7 +17,9 @@ public class Notification {
 
     private String message;
 
+/*
     private Poll poll;
+*/
 
     public Long getId() {
         return id;
@@ -35,11 +37,11 @@ public class Notification {
         this.message = message;
     }
 
-    public Poll getPoll() {
+/*    public Poll getPoll() {
         return poll;
     }
 
     public void setPoll(Poll poll) {
         this.poll = poll;
-    }
+    }*/
 }
