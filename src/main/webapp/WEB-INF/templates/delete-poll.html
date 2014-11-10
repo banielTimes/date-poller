@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+</head>
+<body>
+<h1>All Polls</h1>
+
+<article>
+
+    <p>Deleting Poll - Are you sure?</p>
+
+    <form name="deletePollForm" action="deletePollAction" method="post">
+        <input type="hidden" name="pollId" th:value="${action.poll.id}" />
+        <div>
+            <p>Are you sure?</p>
+        </div>
+        <input type="submit" value="Delete"/>
+        <a href="index">
+            <input type="button" value="Cancel" />
+        </a>
+    </form>
+
+</article>
+</body>
+</html>
