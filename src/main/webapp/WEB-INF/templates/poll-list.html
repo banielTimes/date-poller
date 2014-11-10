@@ -16,7 +16,7 @@
 
         <tr th:each="poll : ${action.pollList}">
             <td th:text="${poll.name}"></td>
-            <td><a th:href="@{editPollAction(id=${poll.id})}">edit</a></td>
+            <td th:if="${action.user.username == poll.creator.username}"><a th:href="@{editPollAction(id=${poll.id})}">edit</a></td>
             <td><a th:href="@{showPollAction(id=${poll.id})}">show</a></td>
         </tr>
     </table>

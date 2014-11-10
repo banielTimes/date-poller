@@ -28,6 +28,8 @@ public class Poll {
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Date> suggestedDates;
 
+    private boolean finished;
+
     public Long getId() {
         return id;
     }
@@ -74,5 +76,13 @@ public class Poll {
 
     public void setSuggestedDates(List<Date> suggestedDates) {
         this.suggestedDates = suggestedDates;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
     }
 }

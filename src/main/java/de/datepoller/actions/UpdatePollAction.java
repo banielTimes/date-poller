@@ -41,6 +41,8 @@ public class UpdatePollAction extends CreatePollAction {
         poll.getSuggestedDates().clear();
         poll.setSuggestedDates(addDatesToPoll(poll));
 
+        poll.setUsers(null);
+
         pollService.update(poll);
 
         return SUCCESS;
