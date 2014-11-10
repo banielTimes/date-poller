@@ -3,60 +3,68 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
+    <link rel="stylesheet" href="foundation" />
+    <script src="modernizr"></script>
 </head>
 <body>
-<h1>Create a poll</h1>
 
-<article>
-    <section>
-        <form name="createPollForm" action="createPollAction" method="post">
-            <div>
-                <label>Name</label>
-                <input type="text" name="name" />
-            </div>
-            <div>
-                <label>Description</label>
-                <input type="text" name="description" style="height:200px;font-size:14pt;" />
-            </div>
-            <div>
-                <p>Suggested Dates</p>
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Create a poll</h1>
 
+            <article>
                 <section>
-                    <div>
-                        <label>Start</label>
-                        <input type="datetime-local" name="start" />
-                    </div>
-                    <div>
-                        <label>End</label>
-                        <input type="datetime-local" name="end" />
-                    </div>
-                </section>
+                    <form name="createPollForm" action="createPollAction" method="post">
+                        <div>
+                            <label>Name</label>
+                            <input type="text" name="name" />
+                        </div>
+                        <div>
+                            <label>Description</label>
+                            <input type="text" name="description" style="height:200px;font-size:14pt;" />
+                        </div>
+                        <div>
+                            <p>Suggested Dates</p>
 
-                <section>
-                    <div>
-                        <label>Start</label>
-                        <input type="datetime-local" name="start" />
-                    </div>
-                    <div>
-                        <label>End</label>
-                        <input type="datetime-local" name="end" />
-                    </div>
-                </section>
+                            <section>
+                                <div>
+                                    <label>Start</label>
+                                    <input type="datetime-local" name="start" />
+                                </div>
+                                <div>
+                                    <label>End</label>
+                                    <input type="datetime-local" name="end" />
+                                </div>
+                            </section>
 
-                <section>
-                    <div>
-                        <label>Start</label>
-                        <input type="datetime-local" name="start" />
-                    </div>
-                    <div>
-                        <label>End</label>
-                        <input type="datetime-local" name="end" />
-                    </div>
+                            <section>
+                                <div>
+                                    <label>Start</label>
+                            <input type="datetime-local" name="start" />
+                                </div>
+                                <div>
+                                    <label>End</label>
+                                    <input type="datetime-local" name="end" />
+                                </div>
+                            </section>
+
+                            <section>
+                                <div>
+                                    <label>Start</label>
+                                    <input type="datetime-local" name="start" />
+                                </div>
+                                <div>
+                                    <label>End</label>
+                                    <input type="datetime-local" name="end" />
+                                </div>
+                            </section>
+                        </div>
+                        <input type="submit" value="Create"/>
+                    </form>
                 </section>
-            </div>
-            <input type="submit" value="Create"/>
-        </form>
-    </section>
-</article>
+            </article>
+        </div>
+    </div>
+
 </body>
 </html>
