@@ -3,54 +3,56 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
+    <link rel="stylesheet" href="foundation" />
+    <script src="modernizr"></script>
 </head>
 <body>
-<h1>Edit <span th:text="${action.poll.name}" /> by User <span th:text="${action.poll.creator.username}" /></h1>
+    <h1>Edit <span th:text="${action.poll.name}" /> by User <span th:text="${action.poll.creator.username}" /></h1>
 
-<article>
-    <section th:switch="${action.user}">
+    <article>
+        <section th:switch="${action.user}">
 
-        <p th:case="${action.poll.creator}">you are the creator!</p>
+            <p th:case="${action.poll.creator}">you are the creator!</p>
 
-        <form name="participatePollForm" action="participatePollAction" method="post">
-            <input type="hidden" name="pollId" th:value="${action.poll.id}" />
-            <div>
-                <label>Name</label>
-                <p th:text="${action.poll.name}" />
-            </div>
-            <div>
-                <label>Description</label>
-                <textarea name="description" th:text="${action.poll.description}" readonly="readonly" />
-            </div>
-            <div>
-                <label>Creator</label>
-                <p th:text="${action.poll.creator.username}" />
-            </div>
+            <form name="participatePollForm" action="participatePollAction" method="post">
+                <input type="hidden" name="pollId" th:value="${action.poll.id}" />
+                <div>
+                    <label>Name</label>
+                    <p th:text="${action.poll.name}" />
+                </div>
+                <div>
+                    <label>Description</label>
+                    <textarea name="description" th:text="${action.poll.description}" readonly="readonly" />
+                </div>
+                <div>
+                    <label>Creator</label>
+                    <p th:text="${action.poll.creator.username}" />
+                </div>
 
-            <div>
-                <p>Suggested Dates</p>
+                <div>
+                    <p>Suggested Dates</p>
 
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th th:if="!${action.user.username == action.poll.creator.username}">Okay</th>
-                        <th th:if="!${action.user.username == action.poll.creator.username}">Not Okay</th>
-                        <th>Attending Users</th>
-                    </tr>
+                    <table>
+                        <tr>
+                            <th>Date</th>
+                            <th th:if="!${action.user.username == action.poll.creator.username}">Okay</th>
+                            <th th:if="!${action.user.username == action.poll.creator.username}">Not Okay</th>
+                            <th>Attending Users</th>
+                        </tr>
 
-                    <tr th:each="date : ${action.poll.suggestedDates}">
-                        <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
-                        <td th:if="!${action.user.username == action.poll.creator.username}"><input type="checkbox" name="dateIdList" th:value="${date.id}" /></td>
-                        <td th:if="!${action.user.username == action.poll.creator.username}"><input type="checkbox" /></td>
-                        <td th:text="${date.attendingUsers}" />
-                    </tr>
-                </table>
+                        <tr th:each="date : ${action.poll.suggestedDates}">
+                            <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
+                            <td th:if="!${action.user.username == action.poll.creator.username}"><input type="checkbox" name="dateIdList" th:value="${date.id}" /></td>
+                            <td th:if="!${action.user.username == action.poll.creator.username}"><input type="checkbox" /></td>
+                            <td th:text="${date.attendingUsers}" />
+                        </tr>
+                    </table>
 
-            </div>
-            <input type="submit" value="Submit"/>
-        </form>
-    </section>
-</article>
+                </div>
+                <input type="submit" value="Submit"/>
+            </form>
+        </section>
+    </article>
 
 </body>
 </html>

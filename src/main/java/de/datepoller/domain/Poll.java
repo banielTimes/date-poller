@@ -25,7 +25,7 @@ public class Poll {
     @JoinColumn(name = "username")
     private List<User> users;
 
-    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "poll", /*cascade = CascadeType.ALL,*/ fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Date> suggestedDates;
 
     @ManyToOne
