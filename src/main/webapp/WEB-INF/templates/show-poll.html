@@ -33,15 +33,15 @@
                 <table>
                     <tr>
                         <th>Date</th>
-                        <th>Okay</th>
-                        <th>Not Okay</th>
+                        <th th:if="!${action.user.username == action.poll.creator.username}">Okay</th>
+                        <th th:if="!${action.user.username == action.poll.creator.username}">Not Okay</th>
                         <th>Attending Users</th>
                     </tr>
 
                     <tr th:each="date : ${action.poll.suggestedDates}">
                         <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
-                        <td><input type="checkbox" name="dateIdList" th:value="${date.id}" /></td>
-                        <td><input type="checkbox" /></td>
+                        <td th:if="!${action.user.username == action.poll.creator.username}"><input type="checkbox" name="dateIdList" th:value="${date.id}" /></td>
+                        <td th:if="!${action.user.username == action.poll.creator.username}"><input type="checkbox" /></td>
                         <td th:text="${date.attendingUsers}" />
                     </tr>
                 </table>

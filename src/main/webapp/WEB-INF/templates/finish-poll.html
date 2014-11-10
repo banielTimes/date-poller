@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title></title>
+</head>
+<body>
+<h1>Finish <span th:text="${action.poll.name}" /></h1>
+
+<article>
+    <section>
+
+        <p>Choose final date</p>
+
+        <form name="finishPollForm" action="finishPollAction" method="post">
+            <input type="hidden" name="pollId" th:value="${action.poll.id}" />
+            <div>
+                <p>Suggested Dates</p>
+
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Okay</th>
+                        <th>Attending Users</th>
+                    </tr>
+
+                    <tr th:each="date : ${action.poll.suggestedDates}">
+                        <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
+                        <td><input type="radio" name="dateId" th:value="${date.id}" /></td>
+                        <td th:text="${date.attendingUsers}" />
+                    </tr>
+                </table>
+
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
+    </section>
+</article>
+
+</body>
+</html>

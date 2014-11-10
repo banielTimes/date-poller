@@ -32,4 +32,8 @@
     <bean id="deletePollDialogAction" class="de.datepoller.actions.DeletePollDialogAction" />
 
     <bean id="deletePollAction" class="de.datepoller.actions.DeletePollAction" />
+
+    <bean id="finishPollDialogAction" class="de.datepoller.actions.FinishPollDialogAction" />
+
+    <bean id="finishPollAction" class="de.datepoller.actions.FinishPollAction" />
 </beans>

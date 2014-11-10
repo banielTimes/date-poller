@@ -17,8 +17,10 @@
         <tr th:each="poll : ${action.pollList}">
             <td th:text="${poll.name}"></td>
             <td th:if="${action.user.username == poll.creator.username}"><a th:href="@{editPollAction(id=${poll.id})}">edit</a></td>
-            <td><a th:href="@{showPollAction(id=${poll.id})}">show</a></td>
-            <td><a th:href="@{deletePollDialogAction(id=${poll.id})}">delete</a></td>
+            <td th:if="${poll.finished == false}"><a th:href="@{showPollAction(id=${poll.id})}">show</a></td>
+            <td th:if="${poll.finished == false and action.user.username == poll.creator.username}"><a th:href="@{finishPollDialogAction(id=${poll.id})}">finish</a></td>
+            <td th:if="${action.user.username == poll.creator.username}"><a th:href="@{deletePollDialogAction(id=${poll.id})}">delete</a></td>
+            <td th:if="${poll.finished == true}" th:text="'From ' + ${poll.finalDate.startTime} + ' to ' + ${poll.finalDate.endTime}" />
         </tr>
     </table>
 </article>

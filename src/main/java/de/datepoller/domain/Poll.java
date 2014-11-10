@@ -25,8 +25,12 @@ public class Poll {
     @JoinColumn(name = "username")
     private List<User> users;
 
-    @OneToMany(mappedBy = "poll", /*cascade = CascadeType.ALL,*/ fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Date> suggestedDates;
+
+    @ManyToOne
+    @JoinColumn
+    private Date finalDate;
 
     private boolean finished;
 
@@ -76,6 +80,14 @@ public class Poll {
 
     public void setSuggestedDates(List<Date> suggestedDates) {
         this.suggestedDates = suggestedDates;
+    }
+
+    public Date getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(Date finalDate) {
+        this.finalDate = finalDate;
     }
 
     public boolean isFinished() {

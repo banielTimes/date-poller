@@ -81,5 +81,13 @@
                 <action name="deletePollAction" class="deletePollAction" method="execute">
                         <result name="success" type="thymeleaf">index</result>
                 </action>
+
+                <action name="finishPollDialogAction" class="finishPollDialogAction" method="execute">
+                        <result name="success" type="thymeleaf">finish-poll</result>
+                </action>
+
+                <action name="finishPollAction" class="finishPollAction" method="execute">
+                        <result name="success" type="thymeleaf">index</result>
+                </action>
         </package>
 </struts>

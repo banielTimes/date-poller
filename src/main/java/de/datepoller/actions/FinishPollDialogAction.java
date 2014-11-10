@@ -2,24 +2,18 @@ package de.datepoller.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.datepoller.domain.Poll;
-import de.datepoller.domain.User;
 import de.datepoller.services.PollService;
-import de.datepoller.services.UserService;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by dsy on 09.11.14.
+ * Created by dsy on 10.11.14.
  */
-public class ShowPollAction extends ActionSupport implements ServletRequestAware {
+public class FinishPollDialogAction extends ActionSupport implements ServletRequestAware {
 
     private HttpServletRequest httpServletRequest;
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private PollService pollService;
@@ -27,8 +21,6 @@ public class ShowPollAction extends ActionSupport implements ServletRequestAware
     private String id;
 
     private Poll poll;
-
-    private User user;
 
     public String getId() {
         return id;
@@ -46,19 +38,8 @@ public class ShowPollAction extends ActionSupport implements ServletRequestAware
         this.poll = poll;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public String execute() throws Exception {
-
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        user = userService.findUserByUsername(username);
 
         id = getHttpServletRequest().getParameter("id");
 
