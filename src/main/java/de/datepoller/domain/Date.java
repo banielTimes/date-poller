@@ -15,14 +15,13 @@ public class Date {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "poll_id", /*insertable = false, */updatable = false)
+    @JoinColumn(name = "poll_id", updatable = false)
     private Poll poll;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "attendingDates")
     private List<User> attendingUsers;
 
-    private Long userAmount;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
@@ -50,14 +49,6 @@ public class Date {
         this.attendingUsers = attendingUsers;
     }
 
-    public Long getUserAmount() {
-        return userAmount;
-    }
-
-    public void setUserAmount(Long userAmount) {
-        this.userAmount = userAmount;
-    }
-
     public LocalDateTime getEndTime() {
         return endTime;
     }
@@ -72,5 +63,22 @@ public class Date {
 
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Date)) return false;
+
+        Date date = (Date) o;
+
+        if (!id.equals(date.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

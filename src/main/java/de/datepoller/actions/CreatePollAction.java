@@ -4,7 +4,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import de.datepoller.domain.Date;
 import de.datepoller.domain.Poll;
 import de.datepoller.domain.User;
-import de.datepoller.services.DateService;
 import de.datepoller.services.PollService;
 import de.datepoller.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,29 +24,10 @@ public class CreatePollAction extends ActionSupport {
     @Autowired
     private PollService pollService;
 
-    @Autowired
-    private DateService dateService;
-
-    private String name;
-    private String description;
-    private List<String> start;
-    private List<String> end;
-
-    public List<String> getStart() {
-        return start;
-    }
-
-    public void setStart(List<String> start) {
-        this.start = start;
-    }
-
-    public List<String> getEnd() {
-        return end;
-    }
-
-    public void setEnd(List<String> end) {
-        this.end = end;
-    }
+    protected String name;
+    protected String description;
+    protected List<String> start;
+    protected List<String> end;
 
     public String getName() {
         return name;
@@ -65,10 +45,43 @@ public class CreatePollAction extends ActionSupport {
         this.description = description;
     }
 
+    public List<String> getStart() {
+        return start;
+    }
+
+    public void setStart(List<String> start) {
+        this.start = start;
+    }
+
+    public List<String> getEnd() {
+        return end;
+    }
+
+    public void setEnd(List<String> end) {
+        this.end = end;
+    }
+
     @Override
     public String execute() throws Exception {
-
         Poll poll = new Poll();
+
+        List<Date> suggestedDates = addDatesToPoll(poll);
+
+        poll.setName(name);
+        poll.setDescription(description);
+        poll.setSuggestedDates(suggestedDates);
+
+        // set current user as creator
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findUserByUsername(username);
+        poll.setCreator(user);
+
+        pollService.save(poll);
+
+        return SUCCESS;
+    }
+
+    protected List<Date> addDatesToPoll(Poll poll) {
         List<Date> suggestedDates = new ArrayList<Date>();
 
         if(start.size() == end.size()) {
@@ -87,23 +100,6 @@ public class CreatePollAction extends ActionSupport {
         } else {
             throw new IllegalArgumentException("There must be a start and an end for each date");
         }
-
-
-        poll.setName(name);
-        poll.setDescription(description);
-        poll.setSuggestedDates(suggestedDates);
-
-        // set current user as creator
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userService.findUserByUsername(username);
-        poll.setCreator(user);
-        
-        pollService.save(poll);
-
-        Poll poll1 = pollService.findPollById(1);
-
-        System.out.print(poll1);
-
-        return SUCCESS;
+        return suggestedDates;
     }
 }

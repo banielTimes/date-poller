@@ -9,28 +9,32 @@
 
 <article>
     <section>
-        <form name="participatePollForm" action="participatePollAction" method="post">
+        <form name="editPollForm" action="updatePollAction" method="post">
             <input type="hidden" name="pollId" th:value="${action.poll.id}" />
             <div>
                 <label>Name</label>
-                <input type="text" name="name" th:value="${action.poll.name}" readonly="readonly" />
+                <input type="text" name="name" th:value="${action.poll.name}" />
             </div>
             <div>
                 <label>Description</label>
-                <textarea name="description" th:text="${action.poll.description}" readonly="readonly" />
+                <textarea name="description" th:text="${action.poll.description}" />
             </div>
             <div>
                 <p>Suggested Dates</p>
 
                 <section th:each="date : ${action.poll.suggestedDates}">
                     <div>
-                        <label>Date</label>
-                        <input type="checkbox" name="dateIdList" th:value="${date.id}" th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
+                        <label>Start</label>
+                        <input type="datetime-local" name="start" th:value="${date.startTime.toString()}" />
+                    </div>
+                    <div>
+                        <label>End</label>
+                        <input type="datetime-local" name="end" th:value="${date.endTime.toString()}" />
                     </div>
                 </section>
 
             </div>
-            <input type="submit" value="Submit"/>
+            <input type="submit" value="Save"/>
         </form>
     </section>
 </article>
