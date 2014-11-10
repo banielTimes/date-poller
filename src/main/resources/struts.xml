@@ -18,10 +18,6 @@
                         <result name="success" type="thymeleaf">login</result>
                 </action>
 
-                <action name="welcome">
-                        <result>WEB-INF/templates/welcome.html</result>
-                </action>
-
                 <action name="index">
                         <result>WEB-INF/templates/index.html</result>
                 </action>
