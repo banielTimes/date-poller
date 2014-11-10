@@ -25,7 +25,7 @@ public class Poll {
     @JoinColumn(name = "username")
     private List<User> users;
 
-    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "poll", /*cascade = CascadeType.ALL,*/ fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Date> suggestedDates;
 
     private boolean finished;
@@ -84,5 +84,22 @@ public class Poll {
 
     public void setFinished(boolean finished) {
         this.finished = finished;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Poll)) return false;
+
+        Poll poll = (Poll) o;
+
+        if (!id.equals(poll.id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

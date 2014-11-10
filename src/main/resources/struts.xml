@@ -66,11 +66,19 @@
                         <result name="success" type="thymeleaf">index</result>
                 </action>
 
-                <action name="showPollAction" class="showPollAction">
+                <action name="showPollAction" class="showPollAction" method="execute">
                         <result name="success" type="thymeleaf">show-poll</result>
                 </action>
 
                 <action name="participatePollAction" class="participatePollAction" method="execute">
+                        <result name="success" type="thymeleaf">index</result>
+                </action>
+
+                <action name="deletePollDialogAction" class="deletePollDialogAction" method="execute">
+                        <result name="success" type="thymeleaf">delete-poll</result>
+                </action>
+
+                <action name="deletePollAction" class="deletePollAction" method="execute">
                         <result name="success" type="thymeleaf">index</result>
                 </action>
         </package>

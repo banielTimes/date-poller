@@ -39,5 +39,4 @@ public class PollService {
     public void delete(Poll poll) {
         pollRepository.delete(poll);
     }
-
 }

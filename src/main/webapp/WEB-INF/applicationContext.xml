@@ -28,4 +28,8 @@
     <bean id="showPollAction" class="de.datepoller.actions.ShowPollAction" />
 
     <bean id="participatePollAction" class="de.datepoller.actions.ParticipatePollAction" />
+
+    <bean id="deletePollDialogAction" class="de.datepoller.actions.DeletePollDialogAction" />
+
+    <bean id="deletePollAction" class="de.datepoller.actions.DeletePollAction" />
 </beans>
