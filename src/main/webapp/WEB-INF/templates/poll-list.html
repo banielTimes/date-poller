@@ -3,23 +3,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title></title>
+    <link rel="stylesheet" href="foundation" />
+    <script src="modernizr"></script>
 </head>
 <body>
-<h1>All Polls</h1>
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>All Polls</h1>
 
-<article>
+            <article>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
 
-    <table>
-        <tr>
-            <th>Name</th>
-        </tr>
-
-        <tr th:each="poll : ${action.pollList}">
-            <td th:text="${poll.name}"></td>
-            <td th:if="${action.user.username == poll.creator.username}"><a th:href="@{editPollAction(id=${poll.id})}">edit</a></td>
-            <td><a th:href="@{showPollAction(id=${poll.id})}">show</a></td>
-        </tr>
-    </table>
-</article>
+                    <tr th:each="poll : ${action.pollList}">
+                        <td th:text="${poll.name}"></td>
+                        <td th:if="${action.user.username == poll.creator.username}"><a th:href="@{editPollAction(id=${poll.id})}">edit</a></td>
+                        <td><a th:href="@{showPollAction(id=${poll.id})}">show</a></td>
+                    </tr>
+                </table>
+            </article>
+        </div>
+    </div>
 </body>
 </html>

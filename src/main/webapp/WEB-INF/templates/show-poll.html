@@ -7,113 +7,55 @@
     <script src="modernizr"></script>
 </head>
 <body>
-<<<<<<< HEAD
-
     <div class="row">
         <div class="large-12 columns">
-            <h1>Create a poll</h1>
+            <h1>Edit <span th:text="${action.poll.name}" /> by User <span th:text="${action.poll.creator.username}" /></h1>
 
             <article>
-                <section>
-                    <form name="createPollForm" action="createPollAction" method="post">
+                <section th:switch="${action.user}">
+
+                    <p th:case="${action.poll.creator}">you are the creator!</p>
+
+                    <form name="participatePollForm" action="participatePollAction" method="post">
+                        <input type="hidden" name="pollId" th:value="${action.poll.id}" />
                         <div>
                             <label>Name</label>
-                            <input type="text" name="name" />
+                            <p th:text="${action.poll.name}" />
                         </div>
                         <div>
                             <label>Description</label>
-                            <input type="text" name="description" style="height:200px;font-size:14pt;" />
+                            <textarea name="description" th:text="${action.poll.description}" readonly="readonly" />
                         </div>
+                        <div>
+                            <label>Creator</label>
+                            <p th:text="${action.poll.creator.username}" />
+                        </div>
+
                         <div>
                             <p>Suggested Dates</p>
 
-                            <section>
-                                <div>
-                                    <label>Start</label>
-                                    <input type="datetime-local" name="start" />
-                                </div>
-                                <div>
-                                    <label>End</label>
-                                    <input type="datetime-local" name="end" />
-                                </div>
-                            </section>
+                            <table>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Okay</th>
+                                    <th>Not Okay</th>
+                                    <th>Attending Users</th>
+                                </tr>
 
-                            <section>
-                                <div>
-                                    <label>Start</label>
-                            <input type="datetime-local" name="start" />
-                                </div>
-                                <div>
-                                    <label>End</label>
-                                    <input type="datetime-local" name="end" />
-                                </div>
-                            </section>
+                                <tr th:each="date : ${action.poll.suggestedDates}">
+                                    <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
+                                    <td><input type="checkbox" name="dateIdList" th:value="${date.id}" /></td>
+                                    <td><input type="checkbox" /></td>
+                                    <td th:text="${date.attendingUsers}" />
+                                </tr>
+                            </table>
 
-                            <section>
-                                <div>
-                                    <label>Start</label>
-                                    <input type="datetime-local" name="start" />
-                                </div>
-                                <div>
-                                    <label>End</label>
-                                    <input type="datetime-local" name="end" />
-                                </div>
-                            </section>
                         </div>
-                        <input type="submit" value="Create"/>
+                        <input type="submit" value="Submit"/>
                     </form>
                 </section>
             </article>
         </div>
     </div>
-=======
-<h1>Edit <span th:text="${action.poll.name}" /> by User <span th:text="${action.poll.creator.username}" /></h1>
-
-<article>
-    <section th:switch="${action.user}">
-
-        <p th:case="${action.poll.creator}">you are the creator!</p>
-
-        <form name="participatePollForm" action="participatePollAction" method="post">
-            <input type="hidden" name="pollId" th:value="${action.poll.id}" />
-            <div>
-                <label>Name</label>
-                <p th:text="${action.poll.name}" />
-            </div>
-            <div>
-                <label>Description</label>
-                <textarea name="description" th:text="${action.poll.description}" readonly="readonly" />
-            </div>
-            <div>
-                <label>Creator</label>
-                <p th:text="${action.poll.creator.username}" />
-            </div>
-
-            <div>
-                <p>Suggested Dates</p>
-
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Okay</th>
-                        <th>Not Okay</th>
-                        <th>Attending Users</th>
-                    </tr>
-
-                    <tr th:each="date : ${action.poll.suggestedDates}">
-                        <td th:text="'From ' + ${date.startTime} + ' to ' + ${date.endTime}" />
-                        <td><input type="checkbox" name="dateIdList" th:value="${date.id}" /></td>
-                        <td><input type="checkbox" /></td>
-                        <td th:text="${date.attendingUsers}" />
-                    </tr>
-                </table>
-
-            </div>
-            <input type="submit" value="Submit"/>
-        </form>
-    </section>
-</article>
->>>>>>> df2acfa5822553305a3457a7d29abe60d1cb3a1c
-
 </body>
 </html>
