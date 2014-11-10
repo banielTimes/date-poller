@@ -4,6 +4,7 @@ import de.datepoller.data.PollRepository;
 import de.datepoller.domain.Poll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class PollService {
 
     @Autowired
@@ -22,7 +24,7 @@ public class PollService {
         return pollRepository.findPollById(id);
     }
 
-    public List<Poll> findAllRoles() {
+    public List<Poll> findAllPolls() {
         return pollRepository.findAll();
     }
 

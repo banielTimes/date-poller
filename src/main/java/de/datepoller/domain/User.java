@@ -27,13 +27,13 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Poll> polls;
 
-    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Poll> createdPolls;
 
-    @ManyToMany(mappedBy = "attendingUsers")
+    @ManyToMany(mappedBy = "attendingUsers", fetch = FetchType.EAGER)
     private List<Date> attendingDates;
 
     public String getUsername() {
@@ -98,5 +98,22 @@ public class User {
 
     public void setAttendingDates(List<Date> attendingDates) {
         this.attendingDates = attendingDates;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (!username.equals(user.username)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return username.hashCode();
     }
 }

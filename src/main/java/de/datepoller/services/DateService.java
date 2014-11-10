@@ -4,6 +4,7 @@ import de.datepoller.data.DateRepository;
 import de.datepoller.domain.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class DateService {
 
     @Autowired
@@ -35,6 +37,12 @@ public class DateService {
 
     public void delete(Date date) {
         dateRepository.delete(date);
+    }
+
+    public void deleteDateList(List<Date> dateList) {
+        for (Date date : dateList) {
+            dateRepository.delete(date);
+        }
     }
 
 }

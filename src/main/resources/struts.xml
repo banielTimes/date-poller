@@ -41,6 +41,10 @@
                 <action name="createPollAction" class="createPollAction" method="execute">
                         <result name="success" type="thymeleaf">index</result>
                 </action>
+                
+                <action name="pollListAction" class="pollListAction" method="execute">
+                        <result name="success" type="thymeleaf">poll-list</result>
+                </action>
 
                 <action name="foundation">
                         <result>WEB-INF/css/foundation.css</result>
@@ -54,16 +58,20 @@
                         <result>WEB-INF/templates/contact.html</result>
                 </action>
 
+                <action name="editPollAction" class="editPollAction" method="execute">
+                        <result name="success" type="thymeleaf">edit-poll</result>
+                </action>
+
+                <action name="updatePollAction" class="updatePollAction" method="execute">
+                        <result name="success" type="thymeleaf">index</result>
+                </action>
+
+                <action name="showPollAction" class="showPollAction">
+                        <result name="success" type="thymeleaf">show-poll</result>
+                </action>
+
+                <action name="participatePollAction" class="participatePollAction" method="execute">
+                        <result name="success" type="thymeleaf">index</result>
+                </action>
         </package>
-
-        <!--<package name="struts" extends="struts-default">
-                <action name="start">
-                        <result>login.jsp</result>
-                </action>
-
-                <action name="login" class="loginAction">
-                        <result name="success">index.jsp</result>
-                        <result name="error">welcome.jsp</result>
-                </action>
-        </package>-->
 </struts>
