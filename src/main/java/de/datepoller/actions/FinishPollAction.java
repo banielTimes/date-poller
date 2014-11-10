@@ -2,8 +2,10 @@ package de.datepoller.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 import de.datepoller.domain.Date;
+import de.datepoller.domain.Notification;
 import de.datepoller.domain.Poll;
 import de.datepoller.services.DateService;
+import de.datepoller.services.NotificationService;
 import de.datepoller.services.PollService;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class FinishPollAction extends ActionSupport {
 
     @Autowired
     private DateService dateService;
+
+    @Autowired
+    private NotificationService notificationService;
 
     private Long pollId;
 
@@ -49,10 +54,16 @@ public class FinishPollAction extends ActionSupport {
         Poll poll = pollService.findPollById(pollId);
         Date date = dateService.findDateById(dateId);
 
+        Notification notification = new Notification();
+
+        notification.setMessage("Poll ended");
+        notification.setPoll(poll);
+
         poll.setFinished(true);
         poll.setFinalDate(date);
 
         pollService.update(poll);
+        notificationService.save(notification);
 
         return SUCCESS;
     }

@@ -17,13 +17,13 @@ import java.util.List;
 public class DateService {
 
     @Autowired
-    DateRepository dateRepository;
+    private DateRepository dateRepository;
 
     public Date findDateById(long id) {
         return dateRepository.findDateById(id);
     }
 
-    public List<Date> findAllRoles() {
+    public List<Date> findAllDates() {
         return dateRepository.findAll();
     }
 
